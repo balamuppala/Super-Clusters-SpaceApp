@@ -1,0 +1,219 @@
+{
+ "region": "Metropolitan France (incl. Corsica); Natural Earth 10m polygon + 0.01\u00b0 buffer",
+ "built_at": "2026-11-14T12:06:57+01:00",
+ "pulled_window": "2026-11-14 12:02\u201312:05 Europe/Paris",
+ "coverage": {
+  "MODIS": [
+   "2000-11-01",
+   "2026-11-14"
+  ],
+  "VIIRS": [
+   "2012-01-20",
+   "2026-11-02"
+  ]
+ },
+ "today": "2026-11-14",
+ "datasets": {
+  "MODIS_SP (FIRMS country archive)": {
+   "dates": [
+    "2000-11-02",
+    "2025-12-31"
+   ],
+   "rows": 35610,
+   "pulled_at": "2026-11-14T12:02:31+01:00"
+  },
+  "VIIRS_SNPP_SP (FIRMS country archive)": {
+   "dates": [
+    "2012-01-20",
+    "2025-12-31"
+   ],
+   "rows": 64966,
+   "pulled_at": "2026-11-14T12:02:39+01:00"
+  },
+  "MODIS_NRT": {
+   "dates": [
+    "2026-09-01",
+    "2026-11-05"
+   ],
+   "rows": 412,
+   "pulled_at": "2026-11-14T12:04:12+01:00"
+  },
+  "MODIS_SP": {
+   "dates": [
+    "2026-02-18",
+    "2026-08-31"
+   ],
+   "rows": 2338,
+   "pulled_at": "2026-11-14T12:04:00+01:00"
+  },
+  "VIIRS_SNPP_NRT": {
+   "dates": [
+    "2026-08-01",
+    "2026-11-02"
+   ],
+   "rows": 1769,
+   "pulled_at": "2026-11-14T12:05:15+01:00"
+  },
+  "VIIRS_SNPP_SP": {
+   "dates": [
+    "2026-01-01",
+    "2026-07-31"
+   ],
+   "rows": 8288,
+   "pulled_at": "2026-11-14T12:04:59+01:00"
+  }
+ },
+ "filters": {
+  "raw_rows": 275670,
+  "dropped_outside_france_polygon": 17268,
+  "nrt_rows_dropped_static_mask": 2387,
+  "dropped_non_vegetation_type": 137397,
+  "dropped_low_confidence": 5235,
+  "kept_rows": 113383,
+  "kept_by_sensor": {
+   "VIIRS": 75023,
+   "MODIS": 38360
+  }
+ },
+ "harmonization": {
+  "chosen": "B_calendar_month_ratio",
+  "overlap": [
+   "2012-02",
+   "2026-10"
+  ],
+  "n_months": 177,
+  "k_global": 0.2809,
+  "k_calendar_month": {
+   "01": 0.1846,
+   "02": 0.3301,
+   "03": 0.3859,
+   "04": 0.2279,
+   "05": 0.173,
+   "06": 0.186,
+   "07": 0.2576,
+   "08": 0.2877,
+   "09": 0.3031,
+   "10": 0.354,
+   "11": 0.2091,
+   "12": 0.1447
+  },
+  "loglog": {
+   "slope": 1.225,
+   "intercept": -2.7486
+  },
+  "pearson_r": 0.953,
+  "spearman_r": 0.917,
+  "fits": {
+   "A_global_ratio": {
+    "r2_in_sample": 0.904,
+    "r2_leave_one_year_out": 0.903,
+    "rmse_loyo": 52.5,
+    "r2_log_space_loyo": 0.776
+   },
+   "B_calendar_month_ratio": {
+    "r2_in_sample": 0.941,
+    "r2_leave_one_year_out": 0.926,
+    "rmse_loyo": 45.7,
+    "r2_log_space_loyo": 0.874
+   },
+   "C_loglog_ols": {
+    "r2_in_sample": 0.754,
+    "r2_leave_one_year_out": 0.768,
+    "rmse_loyo": 81.2,
+    "r2_log_space_loyo": 0.84
+   }
+  }
+ },
+ "tops": {
+  "MODIS": {
+   "months": [
+    [
+     "2026-07",
+     1379.0
+    ],
+    [
+     "2022-07",
+     947.0
+    ],
+    [
+     "2019-02",
+     943.0
+    ]
+   ],
+   "years": [
+    [
+     "2003",
+     3499.0
+    ],
+    [
+     "2026",
+     2750.0
+    ],
+    [
+     "2022",
+     2570.0
+    ]
+   ]
+  },
+  "VIIRS": {
+   "months": [
+    [
+     "2026-07",
+     5117.0
+    ],
+    [
+     "2022-07",
+     3264.0
+    ],
+    [
+     "2019-02",
+     2668.0
+    ]
+   ],
+   "years": [
+    [
+     "2026",
+     10057.0
+    ],
+    [
+     "2022",
+     8110.0
+    ],
+    [
+     "2019",
+     6766.0
+    ]
+   ]
+  },
+  "HARMONIZED": {
+   "months": [
+    [
+     "2026-07",
+     1348.6
+    ],
+    [
+     "2019-02",
+     911.9
+    ],
+    [
+     "2022-07",
+     893.9
+    ]
+   ],
+   "years": [
+    [
+     "2003",
+     3499.0
+    ],
+    [
+     "2026",
+     2764.9
+    ],
+    [
+     "2022",
+     2386.4
+    ]
+   ]
+  }
+ }
+}
