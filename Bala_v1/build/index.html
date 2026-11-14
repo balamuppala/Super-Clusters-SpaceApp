@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,"><title>France burning calendar · harmonized MODIS + VIIRS hotspots</title>
+<link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="vendor/leaflet.draw.css"><link rel="stylesheet" href="style.css">
+</head><body>
+<header>
+  <h1>Burning-activity calendar · Metropolitan France</h1>
+  <p id="subtitle" class="sub">Loading…</p>
+</header>
+<main>
+<section id="controls" aria-label="Search controls">
+  <label>Series
+    <select id="series">
+      <option value="HARMONIZED">Harmonized (MODIS-equivalent)</option>
+      <option value="MODIS">MODIS Terra+Aqua (observed)</option>
+      <option value="VIIRS">VIIRS S-NPP (observed)</option>
+      <option value="VIIRS_EQ">VIIRS S-NPP → MODIS-equivalent</option>
+    </select></label>
+  <label>From <input type="date" id="d0" value="2000-11-01" min="2000-11-01"></label>
+  <label>To <input type="date" id="d1" value="2026-11-14" max="2026-11-14"></label>
+  <fieldset><legend>Lat/lon box</legend>
+    <input id="s" size="6" placeholder="S lat"> <input id="w" size="6" placeholder="W lon">
+    <input id="n" size="6" placeholder="N lat"> <input id="e" size="6" placeholder="E lon">
+    <button id="applyBox">Apply box</button></fieldset>
+  <button id="resetAoi">All France</button>
+  <button id="run" class="primary">Update</button>
+  <span class="sep"></span>
+  <button id="expCsv">Export CSV</button> <button id="expGeo">Export GeoJSON</button>
+  <span id="expMsg" role="status"></span>
+</section>
+<p id="searchLabel" class="label"></p>
+<div class="grid">
+  <section class="card"><h2>Map · hotspots in search</h2><div id="map"></div>
+    <p class="note" id="mapNote"></p>
+    <p class="note">Draw a rectangle or polygon (toolbar, top-left) to set the area of interest. Basemap © OpenStreetMap contributors.</p></section>
+  <section class="card"><h2>Current month vs historical median</h2><div id="current"></div><svg id="curChart" role="img"></svg></section>
+</div>
+<section class="card"><h2>Month × year calendar</h2>
+  <div class="row"><label>View <select id="calMode"><option value="count">Hotspot count</option><option value="anom">Anomaly vs calendar-month median</option></select></label>
+  <span id="calLegend"></span></div>
+  <p class="label" id="calLabel"></p>
+  <div id="cal"></div>
+  <p class="note">Hatched grey = no satellite data for that month (a gap, not zero). Dot = month only partly covered by the dataset. Faded = outside the selected date range. Colours: viridis (colour-blind safe, log scale) for counts; blue–orange diverging for anomalies.</p>
+</section>
+<section class="card"><h2>Method & sources</h2><div id="method"></div></section>
+</main>
+<div id="tip" role="tooltip"></div>
+<script src="vendor/leaflet.js"></script><script src="vendor/leaflet.draw.js"></script><script src="app.js"></script>
+</body></html>

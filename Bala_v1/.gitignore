@@ -1,0 +1,11 @@
+# secrets
+.env
+.env.*
+# local python env
+.venv/
+__pycache__/
+# large raw FIRMS pulls (re-create with scripts/fetch_country_csv.sh + scripts/pull_2026_api.py)
+data/raw/
+# user exports from the running app
+exports/*
+!exports/.gitkeep
