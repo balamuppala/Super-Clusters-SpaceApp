@@ -1,0 +1,19 @@
+sensor,country,year,month,month_name,detections,prior_same_month_years,historical_median,ratio_to_median,excess_over_median,robust_z_log1p,high_confidence_ratio,interpretation,modis_orbital_drift_review
+modis,Russian Federation,2021,7,Jul,141486,10,43409.0,3.2593701766914696,98077.0,4.106162673993292,4.321222659467375,candidate_detection_anomaly; coverage_unverified,False
+modis,Canada,2025,5,May,22129,11,2276.0,9.722759226713533,19853.0,6.099729128270461,18.60347129506008,candidate_detection_anomaly; coverage_unverified,True
+modis,Canada,2025,9,Sep,10466,11,1217.0,8.599835661462613,9249.0,4.486660460744239,14.314070351758794,candidate_detection_anomaly; coverage_unverified,True
+modis,Mozambique,2021,11,Nov,13447,10,5875.5,2.288656284571526,7571.5,5.439895493316873,2.2522068095838588,candidate_detection_anomaly; coverage_unverified,False
+modis,Spain,2025,8,Aug,6808,11,465.0,14.640860215053763,6343.0,4.893648698040769,19.982905982905983,candidate_detection_anomaly; coverage_unverified,True
+modis,Botswana,2021,10,Oct,7946,10,1753.0,4.53280091272105,6193.0,3.521943300166611,4.745053702656868,candidate_detection_anomaly; coverage_unverified,False
+modis,Sudan,2025,1,Jan,8801,11,3987.0,2.2074241284173564,4814.0,4.555205956607424,2.0722433460076046,candidate_detection_anomaly; coverage_unverified,True
+modis,India,2025,12,Dec,6982,11,2331.0,2.995280995280995,4651.0,3.836082187997934,2.5060975609756095,candidate_detection_anomaly; coverage_unverified,True
+modis,Sudan,2025,2,Feb,6540,11,2892.0,2.2614107883817427,3648.0,5.260498043063898,2.0413793103448277,candidate_detection_anomaly; coverage_unverified,True
+modis,Sudan,2025,3,Mar,4903,11,2330.0,2.104291845493562,2573.0,4.384700215352873,1.887218045112782,candidate_detection_anomaly; coverage_unverified,True
+modis,Mozambique,2021,12,Dec,3013,10,964.5,3.123898392949715,2048.5,4.237173864335895,3.69811320754717,candidate_detection_anomaly; coverage_unverified,False
+modis,Sudan,2025,4,Apr,2820,11,1186.0,2.3777403035413154,1634.0,4.072218015666863,2.066805845511482,candidate_detection_anomaly; coverage_unverified,True
+modis,Bolivia,2021,5,May,1965,10,743.0,2.6446837146702555,1222.0,4.7762913880638465,3.542028985507246,candidate_detection_anomaly; coverage_unverified,False
+modis,Niger,2025,10,Oct,1329,11,155.0,8.574193548387097,1174.0,5.110203687504324,12.636363636363637,candidate_detection_anomaly; coverage_unverified,True
+modis,Turkmenistan,2025,3,Mar,893,11,190.0,4.7,703.0,3.810794052156617,5.2272727272727275,candidate_detection_anomaly; coverage_unverified,True
+modis,Peru,2025,12,Dec,787,11,253.0,3.110671936758893,534.0,4.456359864908079,2.8333333333333335,candidate_detection_anomaly; coverage_unverified,True
+modis,Sudan,2025,6,Jun,656,11,136.0,4.823529411764706,520.0,3.5849599181520952,5.545454545454546,candidate_detection_anomaly; coverage_unverified,True
+modis,Iraq,2021,5,May,591,10,186.0,3.1774193548387095,405.0,4.8981094516946,4.048192771084337,candidate_detection_anomaly; coverage_unverified,False

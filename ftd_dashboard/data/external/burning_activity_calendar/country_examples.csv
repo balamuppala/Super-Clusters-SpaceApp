@@ -1,0 +1,18 @@
+country,peak_month,top3_months,top3_share,peak_month_agreement,high_confidence_peak_month
+Canada,Jul,"Jul, Jun, Aug",0.6782351486157046,0.5833333333333334,Jul
+United States,Aug,"Aug, Jul, Mar",0.4276605436609622,0.5833333333333334,Aug
+Russian Federation,Apr,"Apr, Jul, Aug",0.5816052741299607,0.25,Jul
+France,Mar,"Mar, Aug, Feb",0.4772620181476886,0.4166666666666667,Aug
+Spain,Aug,"Aug, Jul, Mar",0.4342122695906455,0.25,Aug
+Greece,Aug,"Aug, Oct, Jul",0.6541191139889713,0.4166666666666667,Aug
+India,Mar,"Mar, Apr, Oct",0.604441228346698,0.8333333333333334,Mar
+China,Mar,"Mar, Apr, Feb",0.4216695246028462,0.4166666666666667,Mar
+Indonesia,Sep,"Sep, Aug, Oct",0.6553885085503863,0.5,Sep
+Brazil,Sep,"Sep, Aug, Oct",0.6648050938179968,0.75,Sep
+Bolivia,Sep,"Sep, Aug, Oct",0.7693831781879955,0.8333333333333334,Sep
+Australia,Oct,"Oct, Nov, Sep",0.4447676875502665,0.6666666666666666,Oct
+Angola,Jul,"Jul, Aug, Jun",0.7249259234832168,0.6666666666666666,Jul
+Democratic Republic of the Congo,Jul,"Jul, Jun, Aug",0.6398681531087637,0.75,Jul
+Zambia,Aug,"Aug, Sep, Jul",0.7287525385342071,0.9166666666666666,Sep
+Mozambique,Sep,"Sep, Aug, Oct",0.7783534390299834,0.8333333333333334,Sep
+Nigeria,Jan,"Jan, Dec, Feb",0.8192905481477546,1.0,Jan

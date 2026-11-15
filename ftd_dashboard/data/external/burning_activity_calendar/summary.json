@@ -1,0 +1,17 @@
+{
+  "raw_rows": 231348760,
+  "retained": 195575577,
+  "duplicates_removed": 0,
+  "invalid_rows": 0,
+  "csv_files": 5002,
+  "countries": 238,
+  "sensors": [
+    "modis",
+    "viirs-jpss1",
+    "viirs-snpp"
+  ],
+  "min_date": "2000-11-01 00:00:00",
+  "max_date": "2025-12-31 00:00:00",
+  "anomaly_candidates": 18,
+  "reconciled_monthly_weekly_audit_totals": true
+}

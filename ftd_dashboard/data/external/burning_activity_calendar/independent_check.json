@@ -1,0 +1,8 @@
+{
+  "check": "Independent DuckDB vs pandas monthly/satellite count comparison",
+  "source_country": "Brazil",
+  "source_year": 2005,
+  "groups": 24,
+  "retained": 594339,
+  "passed": true
+}
