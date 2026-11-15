@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fireverify"
+version = "0.1.0"
+description = "ftd.io: multi-sensor verification of satellite fire hotspots"
+requires-python = ">=3.10"
+dependencies = [
+    "httpx>=0.25",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+fireverify = "fireverify.cli:main"
+ftd = "fireverify.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["fireverify*"]
+
+[tool.setuptools.package-data]
+fireverify = ["data/context/*.geojson", "dashboard/static/*"]

@@ -1,0 +1,13 @@
+{
+  "expected_archives": 24,
+  "completed_archives": 24,
+  "country_csv_files": 5002,
+  "unique_country_year_sensor_files": true,
+  "quality_count_inequalities_passed": true,
+  "monthly_weekly_country_year_satellite_totals_match": true,
+  "raw_retained_audit_reconciled": true,
+  "raw_rows": 231348760,
+  "retained": 195575577,
+  "duplicates_removed": 0,
+  "invalid_rows": 0
+}

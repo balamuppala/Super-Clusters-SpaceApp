@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "name": "volcanoes_seed",
+  "description": "Small seed of persistently active volcanoes that routinely trigger thermal hotspots. Extend with the Smithsonian GVP list for production use.",
+  "features": [
+    {"type": "Feature", "id": "etna", "properties": {"category": "volcano", "name": "Etna"}, "geometry": {"type": "Point", "coordinates": [14.993, 37.751]}},
+    {"type": "Feature", "id": "stromboli", "properties": {"category": "volcano", "name": "Stromboli"}, "geometry": {"type": "Point", "coordinates": [15.213, 38.789]}},
+    {"type": "Feature", "id": "kilauea", "properties": {"category": "volcano", "name": "Kilauea"}, "geometry": {"type": "Point", "coordinates": [-155.287, 19.421]}},
+    {"type": "Feature", "id": "popocatepetl", "properties": {"category": "volcano", "name": "Popocatepetl"}, "geometry": {"type": "Point", "coordinates": [-98.622, 19.023]}},
+    {"type": "Feature", "id": "erta_ale", "properties": {"category": "volcano", "name": "Erta Ale"}, "geometry": {"type": "Point", "coordinates": [40.67, 13.6]}},
+    {"type": "Feature", "id": "nyiragongo", "properties": {"category": "volcano", "name": "Nyiragongo"}, "geometry": {"type": "Point", "coordinates": [29.25, -1.52]}},
+    {"type": "Feature", "id": "sakurajima", "properties": {"category": "volcano", "name": "Sakurajima"}, "geometry": {"type": "Point", "coordinates": [130.657, 31.585]}},
+    {"type": "Feature", "id": "villarrica", "properties": {"category": "volcano", "name": "Villarrica"}, "geometry": {"type": "Point", "coordinates": [-71.93, -39.42]}},
+    {"type": "Feature", "id": "fuego", "properties": {"category": "volcano", "name": "Fuego"}, "geometry": {"type": "Point", "coordinates": [-90.88, 14.473]}},
+    {"type": "Feature", "id": "piton_de_la_fournaise", "properties": {"category": "volcano", "name": "Piton de la Fournaise"}, "geometry": {"type": "Point", "coordinates": [55.713, -21.244]}}
+  ]
+}

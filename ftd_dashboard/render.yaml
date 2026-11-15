@@ -1,0 +1,29 @@
+# Blueprint for a Render FREE web service.
+# Secrets (sync: false) must be entered in the Render dashboard; do not put values here.
+# Native Python alternative if you prefer not to use Docker:
+#   Build command: pip install .
+#   Start command: ./scripts/start.sh
+services:
+  - type: web
+    name: nasa-harmonized-hotspots
+    runtime: docker
+    rootDir: ftd_dashboard
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: FTD_ADMIN_TOKEN
+        sync: false
+      - key: FIRMS_MAP_KEY
+        sync: false
+      - key: CDSE_CLIENT_ID
+        sync: false
+      - key: CDSE_CLIENT_SECRET
+        sync: false
+      - key: FIREVERIFY_DB_URL
+        sync: false
+      - key: FIREVERIFY_DB
+        value: /app/data/fireverify.db
+      - key: FIREVERIFY_OVERPASS
+        value: "1"
+      - key: HOST
+        value: "0.0.0.0"

@@ -1,0 +1,146 @@
+BURNING ACTIVITY CALENDAR — HISTORICAL DATA HANDOFF
+Prepared 15 November 2026 from the supplied NASA_Data.zip archive.
+
+WHAT THIS ANALYSIS MEASURES
+Observed satellite detections of presumed vegetation fires. A detection represents a hot pixel at one overpass; multiple detections can belong to the same fire. These records alone do not establish burned area or fire cause. The analysis covers global country files and provides country-level calendar patterns. Large countries still need regional refinement.
+
+SOURCE AND COVERAGE
+Source: https://drive.google.com/file/d/1AzZA5VOsuGx7pG9hIF25WJC650C4VZ2h/view
+5,002 historical country CSVs; 238 country/territory labels; 231,348,760 source rows; 195,575,577 retained detections across separately analysed sensors.
+Earliest/latest historical dates: 2000-11-01 00:00:00 to 2025-12-31 00:00:00.
+Exact within-file duplicates removed: 0. Invalid date/coordinate rows removed: 0.
+The archive has 24 historical annual ZIPs and separate 2026 live snapshots, imagery, and metadata. The latter were excluded from historical seasonal baselines.
+modis: supplied years 2000, 2001, 2002, 2003, 2004, 2005, 2007, 2008, 2009, 2012, 2013, 2015, 2019, 2021, 2025.
+  Partial date extent: 2000, 2000-11-01 00:00:00 to 2000-12-31 00:00:00.
+viirs-jpss1: supplied years 2018, 2021, 2022, 2024, 2025.
+  Partial date extent: 2018, 2018-04-01 00:00:00 to 2018-12-31 00:00:00.
+viirs-snpp: supplied years 2012, 2013, 2022, 2025.
+  Partial date extent: 2012, 2012-01-20 00:00:00 to 2012-12-31 00:00:00.
+
+Missing years are missing inputs. Do not fill them with zero fire activity. Full calendar-year date extent only establishes that records reach both year endpoints globally; it does not prove uninterrupted observing coverage for every location. No clear-sky/valid-observation denominator was supplied.
+
+SEASONAL PATTERNS
+The primary MODIS analysis uses these available full years from 2003 onward: 2003, 2004, 2005, 2007, 2008, 2009, 2012, 2013, 2015, 2019, 2021, 2025. The baseline starts in 2003 so that both Terra and Aqua are in operation for full calendar years. Per country and year, divide monthly retained detections by that year's retained total, then average each month's fraction across available years. This gives each year equal weight and reduces domination by one exceptional year.
+
+The three leading months below are ranked by their average annual share and may be non-consecutive. Peak agreement is the percentage of years with retained detections in which the same month is the single highest month. Low agreement means the exact peak date varies even if the broader season recurs. A year with zero retained detections has no defined annual fraction; years_with_retained_detections records the usable denominator.
+
+Monthly/weekly baselines require at least three supplied full years. Peak profiles require five years and trend comparisons ten. The long-history profile and trend tables are therefore MODIS-only in this archive; VIIRS contributes shorter baselines and cross-checks.
+
+Country                           Peak  Top three months  Combined share  Peak agreement
+Canada                            Jul   Jul, Jun, Aug     67.8%           58%           
+United States                     Aug   Aug, Jul, Mar     42.8%           58%           
+Russian Federation                Apr   Apr, Jul, Aug     58.2%           25%           
+France                            Mar   Mar, Aug, Feb     47.7%           42%           
+Spain                             Aug   Aug, Jul, Mar     43.4%           25%           
+Greece                            Aug   Aug, Oct, Jul     65.4%           42%           
+India                             Mar   Mar, Apr, Oct     60.4%           83%           
+China                             Mar   Mar, Apr, Feb     42.2%           42%           
+Indonesia                         Sep   Sep, Aug, Oct     65.5%           50%           
+Brazil                            Sep   Sep, Aug, Oct     66.5%           75%           
+Bolivia                           Sep   Sep, Aug, Oct     76.9%           83%           
+Australia                         Oct   Oct, Nov, Sep     44.5%           67%           
+Angola                            Jul   Jul, Aug, Jun     72.5%           67%           
+Democratic Republic of the Congo  Jul   Jul, Jun, Aug     64.0%           75%           
+Zambia                            Aug   Aug, Sep, Jul     72.9%           92%           
+Mozambique                        Sep   Sep, Aug, Oct     77.8%           83%           
+Nigeria                           Jan   Jan, Dec, Feb     81.9%           100%          
+
+Use seasonal_patterns.png alongside this table. Different countries peak in different months. Do not impose one global high-fire season. A broad or bimodal country profile should remain broad or bimodal; do not force a single season.
+
+India has two distinct rises: March–April account for 48.0% of average annual detections, and October–November for 22.8%. Russia has spring and summer concentrations: April–May 37.7%, July–August 37.4%. Nigeria concentrates 81.9% in December–February. Australia's September–November concentration is 44.5%, so a single short national season would omit substantial activity. These are observed seasonal shapes, not verified explanations of ignition causes. France's nominal-quality peak is March but becomes August with the stricter confidence filter; Russia shifts from April to July. Preserve those alternative peaks and confidence sensitivity in the model.
+
+HISTORICAL ANOMALY CANDIDATES
+Each candidate is compared only with earlier available years for the same country, sensor and month. Rules: at least 10 prior years; prior median >=100 detections; actual count >=500; actual/median >=2; robust z >=3.5 on log(1+count). Robust z = (log(1+actual) - median(log(1+history))) / (1.4826 * MAD(log(1+history))). A zero MAD is left unscored. These are analyst-selected screening thresholds, not calibrated probabilities or independently confirmed fire events. Sparse VIIRS histories cannot meet this rule.
+
+Largest qualifying MODIS excesses (limited to examples with >=1,000 detections):
+Country             Month    Detections  Prior median  Ratio  Prior years
+Russian Federation  2021-07  141,486     43,409        3.3x   10         
+Canada              2025-05  22,129      2,276         9.7x   11         
+Canada              2025-09  10,466      1,217         8.6x   11         
+Mozambique          2021-11  13,447      5,876         2.3x   10         
+Spain               2025-08  6,808       465           14.6x  11         
+Botswana            2021-10  7,946       1,753         4.5x   10         
+Sudan               2025-01  8,801       3,987         2.2x   11         
+India               2025-12  6,982       2,331         3.0x   11         
+Sudan               2025-02  6,540       2,892         2.3x   11         
+Sudan               2025-03  4,903       2,330         2.1x   11         
+Mozambique          2021-12  3,013       964           3.1x   10         
+Sudan               2025-04  2,820       1,186         2.4x   11         
+
+Canada's May and September 2025 candidates illustrate unusually strong activity on both sides of its usual June–August concentration. Treat these as early/late activity candidates; precise season onset and duration require finer regional and temporal checks.
+
+Keep these statistical flags separate from independently verified fire-event labels. Satellite coverage changes can also create unusual counts. A low-activity anomaly requires coverage checks before interpretation. high_confidence_ratio in the anomaly CSV supplies a stricter-quality sensitivity check.
+
+2025 cross-sensor comparisons for selected candidates (each sensor uses its own available earlier full years; baselines differ):
+Country  Month  Sensor       Detections  Own baseline ratio  Prior years
+Canada   May    modis        22,129      9.7x                11         
+Canada   May    viirs-jpss1  120,398     11.3x               3          
+Canada   May    viirs-snpp   115,965     40.6x               2          
+Canada   Sep    modis        10,466      8.6x                11         
+Canada   Sep    viirs-jpss1  56,346      2.9x                3          
+Canada   Sep    viirs-snpp   58,202      4.3x                2          
+Spain    Aug    modis        6,808       14.6x               11         
+Spain    Aug    viirs-jpss1  18,868      8.7x                3          
+Spain    Aug    viirs-snpp   19,591      9.7x                2          
+All three selected 2025 cases are also above the NOAA-20/JPSS-1 median for its supplied 2021, 2022 and 2024 observations. The VIIRS baselines contain very few earlier years. These comparisons support review, but are not equivalent to the MODIS anomaly test and do not independently confirm a fire event.
+
+TREND COMPARISONS
+Compare the first five available full years with the last five available full years for each country. These are selected observations, not continuous five-year periods. The CSV lists the exact years and separate Aqua/Terra changes. The Theil–Sen slope uses actual year spacing. These are descriptive changes in detections; no statistical significance or climate attribution is claimed.
+
+Country                           Recent vs early  Early mean/year  Recent mean/year
+Angola                            +0.1%            320,354          320,714         
+Australia                         +0.9%            217,607          219,557         
+Bolivia                           -34.9%           80,252           52,260          
+Brazil                            -44.2%           536,117          298,887         
+Canada                            +88.7%           39,517           74,572          
+China                             +3.3%            79,804           82,445          
+Democratic Republic of the Congo  +8.7%            403,479          438,560         
+France                            -34.6%           1,969            1,287           
+Greece                            -47.6%           2,778            1,456           
+India                             +23.7%           62,232           76,967          
+Indonesia                         +4.7%            58,038           60,786          
+Mozambique                        -4.6%            144,288          137,611         
+Nigeria                           -37.5%           93,569           58,509          
+Russian Federation                -27.7%           338,049          244,318         
+Spain                             -21.3%           5,549            4,370           
+United States                     -11.7%           126,900          112,080         
+Zambia                            -3.5%            201,875          194,887         
+
+The direction of the Canada increase, India increase and Brazil decrease remains the same for Aqua, Terra and the stricter confidence subset. Spain's early/recent change flips from negative to positive under the stricter confidence subset; do not encode a firm directional trend there. country_trend_comparisons.csv includes the numerical sensitivity results. Agreement between satellites does not remove shared sampling changes.
+
+NASA's January 2026 quality note reports that Terra/Aqua orbital drift has changed pixel spacing, scan gaps and time-of-day sampling, with significant impacts observed in late 2024. Consequently the 2025 MODIS counts, anomaly candidates and recent/early comparisons require a sampling-change review. This analysis does not correct orbital drift. Use the 2025 VIIRS comparison and valid-observation coverage before treating a MODIS increase/decrease as a physical change in burning.
+
+TRAINING RECIPE
+1. Define the target as next-period observed vegetation-fire activity. Start with a seasonal count baseline for each country and sensor. Subdivide into suitable districts or spatial cells when preparing an operational local calendar; country averages can mix distinct fire regimes. If the goal is specifically agricultural burning, link hotspots to cropland and crop/harvest records; these records do not label agricultural intent.
+2. Use the MODIS training_through_2020 baseline for initial model development. In this archive the available comparable training years end in 2019. Use 2021 for validation and 2025 as a held-out test only if its date extent is complete, and treat 2025 as a sampling-regime shift requiring VIIRS/coverage checks. Never use the descriptive_all_full_years baseline to evaluate earlier held-out years. Keep each VIIRS platform separate and require enough history before fitting its own seasonal model.
+3. Features: location identifier, sensor/satellite, cyclic day-of-year or month, historical seasonal expectation, strictly lagged activity, and available observation coverage. Weather, rainfall, soil moisture, land cover and crop calendars are useful candidate additions, but this analysis has not established their effects. A satellite acquisition timestamp is not the ignition time.
+4. Targets: retained detection count and, with adequate observation data, activity occurrence. Missing observations must remain unknown rather than becoming verified negative labels. Leave confirmed non-fire thermal-source classes out of vegetation-fire targets.
+5. For monthly calendar labels, seasonal_index = 12 * mean annual share. high: >=1.5; low: <0.5; moderate: otherwise. These labels describe relative expected detected activity within a country. Historical p10/p90/p95 are empirical ranges, not calibrated predictive intervals. Short histories give unstable tails.
+6. Weekly exports use fixed day-of-year bins: days 1–7, 8–14, etc. Bin 53 has one or two days. These are not ISO weeks. weekly_seasonal_calendar reports detections per calendar day to account for the short last bin. A leap year shifts dates after February by one day. Convert to an explicit consistent operational calendar before deployment.
+7. Retain unusual years for evaluation. Do not automatically discard genuine extreme activity as bad training data. Keep anomaly flags as separate review targets. Tune thresholds on validation data and freeze them before the held-out test.
+8. Evaluate by country and season. Compare count MAE against the seasonal baseline; check peak-month/season timing error and predictive interval coverage. For a confirmed-event classifier, use independently validated labels and report precision/recall and false-alert burden. Before production, complete missing years and add valid-observation/clear-sky coverage. No model has been trained or performance-validated by this descriptive analysis.
+
+QUALITY AND INTERPRETATION
+Primary filtering: type=0 (presumed vegetation fire), MODIS confidence >=30 or VIIRS nominal/high. Stricter sensitivity: MODIS >=80 or VIIRS high. Multiple overpasses and satellites remain separate observations. Exact within-file duplicates are removed; detections are not clustered into unique fire incidents. Inputs contain mixed processing-version labels; inspect source_audit.json and harmonize versions when building the production training set. Time aggregation uses recorded UTC dates.
+The monthly/weekly count tables preserve satellite identity. Zero-filled periods mean no retained record in a supplied country-year file, not proof of clear-sky fire absence. Entire absent country-year files remain absent. Country names and boundaries follow the provided filenames, without geographic reassignment.
+FRP is sampled pixel-integrated radiative power in MW. frp_sum_samples_mw sums observation values only; it is not time-integrated energy, burned area, or an estimate of total fire energy. Use frp_valid_retained to calculate mean sampled FRP when appropriate. This handoff does not infer fire spread, burn duration, agricultural intent, or causation from hotspot counts.
+
+FILES
+seasonal_calendar.csv: monthly expectations and empirical ranges, with descriptive and pre-2021 training baselines.
+weekly_seasonal_calendar.csv: fixed day-of-year-bin expectations per calendar day.
+country_seasonal_patterns.csv / country_examples.csv: peak months, concentration and quality sensitivity.
+historical_anomaly_candidates.csv: previous-years-only candidate anomalies and scores.
+sensor_crosschecks_2025.csv: platform-specific comparisons for 2025 anomaly candidates, with exact baseline years.
+country_trend_comparisons.csv: descriptive early/recent changes, exact years and satellite sensitivity.
+monthly_counts_by_satellite.csv / weekly_counts_by_satellite.csv / annual_country_counts.csv: aggregate observations for training and checking.
+archive_coverage.csv / source_audit.json / summary.json: coverage, quality filters and reconciled totals.
+
+METHOD REFERENCES
+NASA MODIS field definitions, inferred hotspot types and FRP units:
+https://firms.modaps.eosdis.nasa.gov/content/descriptions/FIRMS_MODIS_Firehotspots.html
+NASA VIIRS confidence, resolution and field definitions:
+https://firms.modaps.eosdis.nasa.gov/content/descriptions/FIRMS_VIIRS_Firehotspots.html
+NASA detection limitations (cloud, smoke, canopy and overpass timing):
+https://firms2.modaps.eosdis.nasa.gov/alerts/notes.php
+NASA MODIS Terra/Aqua orbital-drift quality note:
+https://landweb.modaps.eosdis.nasa.gov/displayissue?id=1254

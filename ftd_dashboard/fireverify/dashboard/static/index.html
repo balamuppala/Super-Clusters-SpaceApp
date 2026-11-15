@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ftd.io · Active Fire Verification</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23c62f2f' d='M12 2c1 3.5-1.5 5-1.5 7.5 0 1.4 1 2.5 2.3 2.5 1.6 0 2.4-1.4 2.2-3.2C17.6 10.6 19 13 19 15.5 19 19.1 15.9 22 12 22s-7-2.9-7-6.5C5 10 10.5 7.5 12 2z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 3.5-1.5 5-1.5 7.5 0 1.4 1 2.5 2.3 2.5 1.6 0 2.4-1.4 2.2-3.2C17.6 10.6 19 13 19 15.5 19 19.1 15.9 22 12 22s-7-2.9-7-6.5C5 10 10.5 7.5 12 2z"/></svg>
+      <div>
+        <div class="brand-name">ftd.io<span class="brand-tag">MODIS · VIIRS · Sentinel-1/2/3</span></div>
+        <div class="brand-sub">Active fire verification and monitoring</div>
+      </div>
+    </div>
+    <div class="segmented" role="tablist" aria-label="Data lane">
+      <button role="tab" data-lane="simulated" aria-selected="true">Simulated</button>
+      <button role="tab" data-lane="live" aria-selected="false">Live</button>
+    </div>
+    <div class="topbar-right">
+      <span id="job-status" class="job-status" hidden></span>
+      <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button id="run-btn" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg>
+        <span>Run ingestion</span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="viewbar" role="tablist" aria-label="View">
+    <button role="tab" data-view="verify" aria-selected="true">Verification</button>
+    <button role="tab" data-view="calendar" aria-selected="false">Fire calendar <span class="count">MODIS + VIIRS</span></button>
+  </nav>
+
+  <main id="view-verify">
+    <section class="kpis" aria-label="Summary">
+      <div class="tile"><div class="tile-label">Events scored</div><div class="tile-value" id="kpi-events">–</div><div class="tile-foot" id="kpi-events-foot"></div></div>
+      <div class="tile"><div class="tile-label"><i class="dot" style="--c:var(--v-confirmed)"></i>Fire (confirmed + likely)</div><div class="tile-value" id="kpi-fire">–</div><div class="tile-foot" id="kpi-fire-foot"></div></div>
+      <div class="tile"><div class="tile-label"><i class="dot" style="--c:var(--v-uncertain)"></i>Uncertain</div><div class="tile-value" id="kpi-uncertain">–</div><div class="tile-foot">needs an analyst</div></div>
+      <div class="tile"><div class="tile-label"><i class="dot" style="--c:var(--v-false)"></i>False alarms</div><div class="tile-value" id="kpi-false">–</div><div class="tile-foot" id="kpi-false-foot"></div></div>
+      <div class="tile"><div class="tile-label"><svg class="status-icon warn" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 21h20L12 3zm0 6v6m0 2.5v.5"/></svg>Quarantine pending</div><div class="tile-value" id="kpi-quarantine">–</div><div class="tile-foot" id="kpi-rejected"></div></div>
+    </section>
+
+    <section class="card distribution">
+      <div class="card-head">
+        <h2>Verdict distribution</h2>
+        <span class="muted" id="table-version"></span>
+      </div>
+      <div id="distribution"></div>
+    </section>
+
+    <section class="workspace">
+      <div class="card map-card">
+        <div id="map" aria-label="Map of scored fire events"></div>
+        <div class="map-legend" id="map-legend"></div>
+        <div class="map-controls">
+          <div class="segmented small" aria-label="Basemap">
+            <button data-basemap="map" aria-selected="true">Map</button>
+            <button data-basemap="satellite" aria-selected="false">Satellite</button>
+          </div>
+        </div>
+        <div class="draw-banner" id="draw-banner" hidden>
+          <span>Zoom with the scroll wheel, then drag a box (max 10° × 10°)</span>
+          <button class="btn btn-sm" id="draw-cancel" type="button">Cancel</button>
+        </div>
+        <div class="map-empty" id="map-empty" hidden>
+          <p>No scored events in this lane yet.</p>
+          <button class="btn btn-primary" data-open-run>Run ingestion</button>
+        </div>
+      </div>
+
+      <aside class="card detail" id="detail" aria-live="polite">
+        <div class="detail-empty">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg>
+          <p>Select an event on the map or in the table to see why it was scored the way it was.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="card tabs-card">
+      <div class="tabs" role="tablist">
+        <button role="tab" data-tab="events" aria-selected="true">Events <span class="count" id="count-events"></span></button>
+        <button role="tab" data-tab="quarantine" aria-selected="false">Quarantine <span class="count" id="count-quarantine"></span></button>
+        <button role="tab" data-tab="rejected" aria-selected="false">Rejected <span class="count" id="count-rejected"></span></button>
+        <button role="tab" data-tab="runs" aria-selected="false">Runs</button>
+        <button role="tab" data-tab="sources" aria-selected="false">Sources</button>
+      </div>
+      <div class="tab-panel" id="tab-panel"></div>
+    </section>
+  </main>
+
+
+  <main id="view-calendar" hidden>
+    <section class="card cal-controls" aria-label="Calendar settings">
+      <label class="field cal-area">Area
+        <select id="cal-area">
+          <optgroup label="Areas with fetched data" id="cal-area-fetched"></optgroup>
+          <optgroup label="Most active right now (VIIRS, last 24 h)" id="cal-area-active"><option disabled>Loading…</option></optgroup>
+          <optgroup label="Fire-prone regions" id="cal-area-regions"></optgroup>
+          <option value="custom">Custom coordinates</option>
+        </select>
+      </label>
+      <div class="bbox-grid cal-bbox">
+        <label>West<input type="number" name="cw" step="0.01" min="-180" max="180"></label>
+        <label>South<input type="number" name="cs" step="0.01" min="-90" max="90"></label>
+        <label>East<input type="number" name="ce" step="0.01" min="-180" max="180"></label>
+        <label>North<input type="number" name="cn" step="0.01" min="-90" max="90"></label>
+      </div>
+      <label class="field cal-period">Period
+        <select id="cal-period">
+          <option value="90">Last 90 days</option>
+          <option value="182">Last 6 months</option>
+          <option value="365" selected>Last 12 months</option>
+          <option value="730">Last 24 months</option>
+          <option value="sampled">Since 2000, every 5th year (fast)</option>
+          <option value="since2000">Since 2000, every year (slow)</option>
+          <option value="custom">Custom dates</option>
+        </select>
+      </label>
+      <label class="field">From<input type="date" id="cal-start"></label>
+      <label class="field">To<input type="date" id="cal-end"></label>
+      <label class="check"><input type="checkbox" id="cal-low"> Include low-confidence pixels</label>
+      <div class="cal-actions">
+        <button class="btn btn-primary" id="cal-fetch" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Fetch MODIS + VIIRS</span>
+        </button>
+      </div>
+      <div class="area-check cal-status" id="cal-status" role="status"></div>
+    </section>
+
+    <section class="kpis cal-kpis" aria-label="Calendar summary">
+      <div class="tile"><div class="tile-label"><i class="dot" style="--c:var(--c-harm)"></i>Harmonized fire cells</div><div class="tile-value" id="ck-cells">–</div><div class="tile-foot" id="ck-cells-foot"></div></div>
+      <div class="tile"><div class="tile-label">Active fire days</div><div class="tile-value" id="ck-days">–</div><div class="tile-foot" id="ck-days-foot"></div></div>
+      <div class="tile"><div class="tile-label"><i class="dot" style="--c:var(--c-viirs)"></i>VIIRS cells per MODIS cell</div><div class="tile-value" id="ck-ratio">–</div><div class="tile-foot" id="ck-ratio-foot"></div></div>
+      <div class="tile"><div class="tile-label"><i class="dot" style="--c:var(--c-modis)"></i>MODIS confirmed by VIIRS</div><div class="tile-value" id="ck-agree">–</div><div class="tile-foot" id="ck-agree-foot"></div></div>
+      <div class="tile"><div class="tile-label">Trend</div><div class="tile-value" id="ck-trend">–</div><div class="tile-foot" id="ck-trend-foot"></div></div>
+      <div class="tile"><div class="tile-label"><svg class="status-icon warn" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 21h20L12 3zm0 6v6m0 2.5v.5"/></svg>Possible anomalies</div><div class="tile-value" id="ck-anoms">–</div><div class="tile-foot" id="ck-anoms-foot"></div></div>
+    </section>
+
+    <section class="card cal-pad" id="cal-lt" hidden aria-labelledby="lt-title">
+      <div class="card-head"><h2 id="lt-title">Long-term record <span class="muted" id="lt-range"></span></h2><span class="muted">MODIS since Nov 2000 · VIIRS since 2012</span></div>
+      <div id="lt-body"></div>
+    </section>
+
+    <section class="card cal-pad" id="cal-nat" hidden aria-labelledby="nat-title">
+      <div class="card-head nat-head">
+        <h2 id="nat-title">National context <span class="muted" id="nat-sub"></span></h2>
+        <label class="nat-pick"><span class="muted">Country</span><select id="nat-country" aria-label="Country"></select></label>
+      </div>
+      <div id="nat-body"></div>
+    </section>
+
+    <section class="card cal-card">
+      <div class="card-head">
+        <h2>Fire calendar <span class="muted" id="cal-range"></span></h2>
+        <div class="segmented small" id="cal-metric" aria-label="Calendar metric">
+          <button data-metric="estimate" aria-selected="true">Harmonized</button>
+          <button data-metric="modis_cells" aria-selected="false">MODIS</button>
+          <button data-metric="viirs_cells" aria-selected="false">VIIRS</button>
+          <button data-metric="frp_mw" aria-selected="false">Peak FRP</button>
+        </div>
+      </div>
+      <div class="cal-legend" id="cal-legend"></div>
+      <div class="cal-grid" id="cal-grid"></div>
+    </section>
+
+    <section class="cal-split">
+      <div class="card cal-pad">
+        <div class="card-head"><h2>Daily fire activity</h2><span class="muted">1-km fire cells per day · lines are 7-day averages</span></div>
+        <div id="cal-series"></div>
+      </div>
+      <aside class="card cal-day" id="cal-day" aria-live="polite">
+        <div id="cal-day-body"></div>
+        <div class="cal-day-map" id="cal-day-map" hidden></div>
+      </aside>
+    </section>
+
+    <section class="cal-split even">
+      <div class="card cal-pad"><div class="card-head"><h2>Trends</h2><span class="muted" id="cal-trend-method"></span></div><div id="cal-trends"></div></div>
+      <div class="card cal-pad"><div class="card-head"><h2>Possible anomalies</h2><span class="muted" id="cal-anom-note"></span></div><div id="cal-anoms"></div></div>
+    </section>
+
+    <section class="card cal-pad" aria-labelledby="actions-title">
+      <div class="card-head"><h2 id="actions-title">Government action options</h2><span class="muted">one group per major finding, most pressing first</span></div>
+      <div id="cal-actions"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Data: NASA FIRMS (MODIS C6.1, VIIRS 375 m) · Copernicus Data Space Ecosystem (Sentinel-1, -2, -3) · © OpenStreetMap contributors · Basemap © Esri</span>
+    <span>Decision support only: verify detections before operational use.</span>
+  </footer>
+
+  <dialog id="run-dialog">
+    <form method="dialog" id="run-form">
+      <h2>Run ingestion</h2>
+      <div class="segmented" id="run-mode">
+        <button type="button" data-mode="simulated" aria-selected="true">Simulated</button>
+        <button type="button" data-mode="live" aria-selected="false">Live</button>
+      </div>
+      <div data-mode-panel="simulated">
+        <p class="muted">Generates labelled synthetic events (wildfires, crop burns, flares, volcanoes, urban false alarms, corrupt records) and runs them through the real pipeline. No keys needed.</p>
+        <div class="form-grid">
+          <label>Runs<input type="number" name="runs" min="1" max="20" value="5"></label>
+          <label>Days<input type="number" name="sim_days" min="1" max="10" step="0.5" value="2"></label>
+          <label>First seed<input type="number" name="seed" min="1" value="1"></label>
+        </div>
+      </div>
+      <div data-mode-panel="live" hidden>
+        <p class="muted">Fetches VIIRS/MODIS detections for the area, then Sentinel-1/2/3 and fire history for the biggest events (about 20 s each, max 25 per run).</p>
+        <label class="field">Area
+          <select id="area-source">
+            <option value="view">Current map view</option>
+            <option value="draw">Draw a box on the map…</option>
+            <optgroup label="Most active right now (VIIRS, last 24 h)" id="area-active">
+              <option disabled>Loading…</option>
+            </optgroup>
+            <optgroup label="Fire-prone regions" id="area-regions"></optgroup>
+            <option value="custom">Custom coordinates</option>
+          </select>
+        </label>
+        <div class="bbox-grid">
+          <label>West<input type="number" name="w" step="0.01" min="-180" max="180"></label>
+          <label>South<input type="number" name="s" step="0.01" min="-90" max="90"></label>
+          <label>East<input type="number" name="e" step="0.01" min="-180" max="180"></label>
+          <label>North<input type="number" name="n" step="0.01" min="-90" max="90"></label>
+        </div>
+        <div class="area-check" id="area-check" role="status"></div>
+        <div class="form-grid">
+          <label>Days<input type="number" name="live_days" min="0.5" max="5" step="0.5" value="1"></label>
+        </div>
+      </div>
+      <label class="field">Ingestion password
+        <input type="password" name="admin_token" id="admin-token" autocomplete="current-password" placeholder="required on the public site">
+      </label>
+      <p class="muted" style="margin-top:0.4rem">Needed for ingest, calendar backfill, and quarantine actions on the hosted site. Stored only in this browser tab.</p>
+      <p class="error-text" id="run-error" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="btn" value="cancel" id="run-cancel">Cancel</button>
+        <button type="submit" class="btn btn-primary" id="run-submit">Start</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/static/charts.js"></script>
+  <script src="/static/app.js"></script>
+  <script src="/static/calendar.js"></script>
+</body>
+</html>

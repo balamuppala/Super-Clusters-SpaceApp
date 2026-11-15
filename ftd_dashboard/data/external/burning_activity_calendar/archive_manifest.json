@@ -1,0 +1,422 @@
+[
+  {
+    "name": "Historical Data NASA/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "Historical Data NASA/modis_2005_all_countries.zip",
+    "bytes": 89941181,
+    "compressed": 89941181,
+    "crc32": 96564767
+  },
+  {
+    "name": "Historical Data NASA/modis_2019_all_countries.zip",
+    "bytes": 80447291,
+    "compressed": 80447291,
+    "crc32": 4022282298
+  },
+  {
+    "name": "Historical Data NASA/viirs-snpp_2025_all_countries.zip",
+    "bytes": 327260243,
+    "compressed": 327260243,
+    "crc32": 2983600265
+  },
+  {
+    "name": "Historical Data NASA/modis_2000_all_countries.zip",
+    "bytes": 4658057,
+    "compressed": 4658057,
+    "crc32": 681509726
+  },
+  {
+    "name": "Historical Data NASA/viirs-jpss1_2025_all_countries.zip",
+    "bytes": 328649496,
+    "compressed": 328649496,
+    "crc32": 2339521059
+  },
+  {
+    "name": "Historical Data NASA/modis_2004_all_countries.zip",
+    "bytes": 89357956,
+    "compressed": 89357956,
+    "crc32": 1752342670
+  },
+  {
+    "name": "Historical Data NASA/viirs-jpss1_2021_all_countries.zip",
+    "bytes": 358433386,
+    "compressed": 358433386,
+    "crc32": 3601820867
+  },
+  {
+    "name": "Historical Data NASA/modis_2001_all_countries.zip",
+    "bytes": 31545201,
+    "compressed": 31545201,
+    "crc32": 1986026437
+  },
+  {
+    "name": "Historical Data NASA/viirs-jpss1_2024_all_countries.zip",
+    "bytes": 401156384,
+    "compressed": 401156384,
+    "crc32": 2789530610
+  },
+  {
+    "name": "Historical Data NASA/modis_2007_all_countries.zip",
+    "bytes": 90015477,
+    "compressed": 90015477,
+    "crc32": 809411684
+  },
+  {
+    "name": "Historical Data NASA/viirs-snpp_2013_all_countries.zip",
+    "bytes": 344965208,
+    "compressed": 344965208,
+    "crc32": 199391840
+  },
+  {
+    "name": "Historical Data NASA/viirs-jpss1_2022_all_countries.zip",
+    "bytes": 324844239,
+    "compressed": 324844239,
+    "crc32": 1739880697
+  },
+  {
+    "name": "Historical Data NASA/modis_2002_all_countries.zip",
+    "bytes": 65275966,
+    "compressed": 65275966,
+    "crc32": 518966949
+  },
+  {
+    "name": "Historical Data NASA/viirs-snpp_2022_all_countries.zip",
+    "bytes": 307250332,
+    "compressed": 307250332,
+    "crc32": 2925134659
+  },
+  {
+    "name": "Historical Data NASA/viirs-snpp_2012_all_countries.zip",
+    "bytes": 369758237,
+    "compressed": 369758237,
+    "crc32": 1545738318
+  },
+  {
+    "name": "Historical Data NASA/modis_2003_all_countries.zip",
+    "bytes": 90378077,
+    "compressed": 90378077,
+    "crc32": 2011304875
+  },
+  {
+    "name": "Historical Data NASA/modis_2013_all_countries.zip",
+    "bytes": 74279102,
+    "compressed": 74279102,
+    "crc32": 770172158
+  },
+  {
+    "name": "Historical Data NASA/modis_2012_all_countries.zip",
+    "bytes": 87107469,
+    "compressed": 87107469,
+    "crc32": 1717838774
+  },
+  {
+    "name": "Historical Data NASA/modis_2008_all_countries.zip",
+    "bytes": 84590452,
+    "compressed": 84590452,
+    "crc32": 2583456631
+  },
+  {
+    "name": "Historical Data NASA/modis_2025_all_countries.zip",
+    "bytes": 64771492,
+    "compressed": 64771492,
+    "crc32": 1641072810
+  },
+  {
+    "name": "Historical Data NASA/viirs-jpss1_2018_all_countries.zip",
+    "bytes": 259896539,
+    "compressed": 259896539,
+    "crc32": 3623002003
+  },
+  {
+    "name": "Historical Data NASA/modis_2021_all_countries.zip",
+    "bytes": 77277752,
+    "compressed": 77277752,
+    "crc32": 2947426217
+  },
+  {
+    "name": "Historical Data NASA/modis_2009_all_countries.zip",
+    "bytes": 78288906,
+    "compressed": 78288906,
+    "crc32": 1722245598
+  },
+  {
+    "name": "Historical Data NASA/modis_2015_all_countries.zip",
+    "bytes": 83177469,
+    "compressed": 83177469,
+    "crc32": 4150145701
+  },
+  {
+    "name": "LiveDataNASA/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/hls_s30/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/hls_s30/hls_s30_20261101_france.png",
+    "bytes": 1286069,
+    "compressed": 1282864,
+    "crc32": 3469498445
+  },
+  {
+    "name": "LiveDataNASA/gibs_ndvi/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/gibs_ndvi/modis_terra_ndvi8_20261110_france.png",
+    "bytes": 865956,
+    "compressed": 863630,
+    "crc32": 1190412649
+  },
+  {
+    "name": "LiveDataNASA/gibs_ndvi/viirs_noaa20_ndvi8_20261110_france.png",
+    "bytes": 830836,
+    "compressed": 828404,
+    "crc32": 1059594349
+  },
+  {
+    "name": "LiveDataNASA/gibs_ndvi/modis_terra_ndvi16_20260813_france.png",
+    "bytes": 845883,
+    "compressed": 843446,
+    "crc32": 2297388935
+  },
+  {
+    "name": "LiveDataNASA/gibs_ndvi/viirs_noaa21_ndvi8_20261110_france.png",
+    "bytes": 825292,
+    "compressed": 822758,
+    "crc32": 2032981715
+  },
+  {
+    "name": "LiveDataNASA/gibs_ndvi/modis_terra_ndvi16_20261016_france.png",
+    "bytes": 816651,
+    "compressed": 814264,
+    "crc32": 3648824497
+  },
+  {
+    "name": "LiveDataNASA/sentinel-3/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/sentinel-3/stac_cdse_olci_lfr_ntc.json",
+    "bytes": 83986,
+    "compressed": 6683,
+    "crc32": 1104405539
+  },
+  {
+    "name": "LiveDataNASA/sentinel-3/stac_cdse_slstr_frp_nrt.json",
+    "bytes": 66991,
+    "compressed": 5645,
+    "crc32": 3893165576
+  },
+  {
+    "name": "LiveDataNASA/sentinel-3/stac_cdse_synergy_v10_ndvi.json",
+    "bytes": 96793,
+    "compressed": 7134,
+    "crc32": 2033913055
+  },
+  {
+    "name": "LiveDataNASA/sentinel-3/quicklook_synergy_v10_ndvi_S3B_SY_2_V10____20261101T000000_20261110T235959_20261113T123643_EUROPE____________ESA_O_NT_003.jpg",
+    "bytes": 666474,
+    "compressed": 648310,
+    "crc32": 1327831654
+  },
+  {
+    "name": "LiveDataNASA/sentinel-3/quicklook_olci_lfr_S3B_OL_2_LFR____20261113T104929_20261113T105229_20261114T121136_0180_126_379_2160_ESA_O_NT_003.jpg",
+    "bytes": 674358,
+    "compressed": 632224,
+    "crc32": 1463104917
+  },
+  {
+    "name": "LiveDataNASA/sentinel-3/quicklook_slstr_frp_S3B_SL_2_FRP____20261114T214613_20261114T214913_20261114T223013_0179_127_015______MAR_O_NR_003.jpg",
+    "bytes": 5992,
+    "compressed": 5297,
+    "crc32": 887205566
+  },
+  {
+    "name": "LiveDataNASA/sentinel-2/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/sentinel-2/quicklook_earthsearch_S2C_30UWV_20261114_0_L2A.jpg",
+    "bytes": 6678,
+    "compressed": 5702,
+    "crc32": 1287789106
+  },
+  {
+    "name": "LiveDataNASA/sentinel-2/stac_earthsearch_sentinel-2-l2a.json",
+    "bytes": 105264,
+    "compressed": 6517,
+    "crc32": 749969668
+  },
+  {
+    "name": "LiveDataNASA/sentinel-2/stac_planetarycomputer_sentinel-2-l2a.json",
+    "bytes": 77997,
+    "compressed": 5212,
+    "crc32": 1673448189
+  },
+  {
+    "name": "LiveDataNASA/sentinel-2/quicklook_pc_S2C_MSIL2A_20261114T112321_R037_T30UWV_20261114T125005.png",
+    "bytes": 557531,
+    "compressed": 551771,
+    "crc32": 585338625
+  },
+  {
+    "name": "LiveDataNASA/sentinel-2/quicklook_cdse_S2C_MSIL2A_20261114T112321_N0513_R037_T30UXB_20261114T125005.jpg",
+    "bytes": 5397,
+    "compressed": 3717,
+    "crc32": 1790508839
+  },
+  {
+    "name": "LiveDataNASA/sentinel-2/stac_cdse_sentinel-2-l2a.json",
+    "bytes": 357212,
+    "compressed": 36953,
+    "crc32": 2688334326
+  },
+  {
+    "name": "LiveDataNASA/firms_VIIRS_NOAA20_NRT_20261114_2341.csv",
+    "bytes": 3275654,
+    "compressed": 693577,
+    "crc32": 924938884
+  },
+  {
+    "name": "LiveDataNASA/clms_burned_area/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/clms_burned_area/stac_search_daily_v4.json",
+    "bytes": 53349,
+    "compressed": 4058,
+    "crc32": 3134218962
+  },
+  {
+    "name": "LiveDataNASA/clms_burned_area/ba300_daily_c_gls_BA300-NRT_202609190000_GLOBE_S3_V4.0.1_cog_france.png",
+    "bytes": 11123,
+    "compressed": 6858,
+    "crc32": 1875289354
+  },
+  {
+    "name": "LiveDataNASA/effis/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/effis/burntareas_france_20260101_present.geojson",
+    "bytes": 14826466,
+    "compressed": 5200652,
+    "crc32": 4164508225
+  },
+  {
+    "name": "LiveDataNASA/effis/burntareas_france_20260101_present_attributes.json",
+    "bytes": 1213820,
+    "compressed": 175623,
+    "crc32": 351226610
+  },
+  {
+    "name": "LiveDataNASA/effis/README.txt",
+    "bytes": 558,
+    "compressed": 362,
+    "crc32": 1149942137
+  },
+  {
+    "name": "LiveDataNASA/effis/fwi_france_2026-11-14.png",
+    "bytes": 13289,
+    "compressed": 7323,
+    "crc32": 2070941991
+  },
+  {
+    "name": "LiveDataNASA/opera_dist/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/opera_dist/opera_dist_alert_hls_20261101_france.png",
+    "bytes": 137118,
+    "compressed": 135192,
+    "crc32": 2583395781
+  },
+  {
+    "name": "LiveDataNASA/firms_VIIRS_NOAA20_NRT_20261114_2334.csv",
+    "bytes": 3275654,
+    "compressed": 693577,
+    "crc32": 924938884
+  },
+  {
+    "name": "LiveDataNASA/fetch_sentinel_ndvi_manifest.txt",
+    "bytes": 3486,
+    "compressed": 983,
+    "crc32": 612690783
+  },
+  {
+    "name": "LiveDataNASA/firms_VIIRS_NOAA21_NRT_20261114_2341.csv",
+    "bytes": 3164337,
+    "compressed": 669129,
+    "crc32": 3680844091
+  },
+  {
+    "name": "LiveDataNASA/clms_ndvi/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/clms_ndvi/ndvi300_20261011_france.png",
+    "bytes": 340612,
+    "compressed": 329093,
+    "crc32": 4258160589
+  },
+  {
+    "name": "LiveDataNASA/sentinel-1/",
+    "bytes": 0,
+    "compressed": 0,
+    "crc32": 0
+  },
+  {
+    "name": "LiveDataNASA/sentinel-1/quicklook_pc_S1D_IW_GRDH_1SDV_20261114T181339_20261114T181404_005467_00A70F.png",
+    "bytes": 492790,
+    "compressed": 492211,
+    "crc32": 853373861
+  },
+  {
+    "name": "LiveDataNASA/sentinel-1/stac_cdse_sentinel-1-grd.json",
+    "bytes": 83913,
+    "compressed": 6673,
+    "crc32": 639417135
+  },
+  {
+    "name": "LiveDataNASA/sentinel-1/quicklook_cdse_S1D_IW_GRDH_1SDV_20261114T181339_20261114T181404_005467_00A70F_0293_COG.png",
+    "bytes": 62374,
+    "compressed": 62384,
+    "crc32": 2002819453
+  },
+  {
+    "name": "LiveDataNASA/sentinel-1/stac_planetarycomputer_sentinel-1-grd.json",
+    "bytes": 43739,
+    "compressed": 3699,
+    "crc32": 3521339401
+  },
+  {
+    "name": "LiveDataNASA/firms_MODIS_NRT_20261114_2341.csv",
+    "bytes": 699458,
+    "compressed": 176292,
+    "crc32": 156404797
+  }
+]
